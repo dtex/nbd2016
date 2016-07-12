@@ -283,7 +283,7 @@
             </section>
           </section>
 
-          <section>
+          <!--<section>
             <h3>Don't do this:</h3>
   <pre><code contenteditable="" class="php">$ node
 &gt; <span class="keyword">var</span> j5 = <span class="keyword">require</span>(<span class="string">"johnny-five"</span>);
@@ -303,7 +303,7 @@ undefined
 &gt;
 undefined
   </code></pre>
-          </section>
+</section>-->
 
           <section>
             <br><br><br><br>
@@ -317,7 +317,7 @@ undefined
   <pre><code contenteditable>var five = require("johnny-five");
 var board = new five.Board();
 
-board.on("ready", () => {
+board.on("ready", function() {
   var led = new five.Led(11);
   led.on();
 });</code></pre>
@@ -331,7 +331,7 @@ var Tessel = require("tessel-io");
 
 var board = new five.Board( { io: new Tessel() });
 
-board.on("ready", () => {
+board.on("ready", function() {
   var led = new five.Led("a5");
   led.on();
 });</code></pre>
@@ -347,7 +347,7 @@ board.on("ready", () => {
   <pre><code contenteditable>var five = require("johnny-five");
 var board = new five.Board();
 
-board.on("ready", () => {
+board.on("ready", function() {
   var led = new five.Led(11);
   led.blink();
 });
@@ -362,7 +362,7 @@ var Tessel = require("tessel-io");
 
 var board = new five.Board( { io: new Tessel() });
 
-board.on("ready", () => {
+board.on("ready", function() {
   var led = new five.Led("a5");
   led.blink();
 });</code></pre>
@@ -376,7 +376,7 @@ board.on("ready", () => {
 <pre><code contenteditable>var five = require("johnny-five");
 var board = new five.Board();
 
-board.on("ready", () => {
+board.on("ready", function() {
   var led = new five.Led(11);
   led.blink(250); // <-- ms on/off phases
 });
@@ -391,7 +391,7 @@ var Tessel = require("tessel-io");
 
 var board = new five.Board( { io: new Tessel() });
 
-board.on("ready", () => {
+board.on("ready", function() {
   var led = new five.Led("a5");
   led.blink(250); // <-- ms on/off phases
 });
@@ -406,7 +406,7 @@ board.on("ready", () => {
   <pre><code contenteditable>var five = require("johnny-five");
 var board = new five.Board();
 
-board.on("ready", () => {
+board.on("ready", function() {
   var led = new five.Led(11);
 
   this.repl.inject({
@@ -459,10 +459,10 @@ board.on("ready", () => {
 <pre><code contenteditable>var five = require("johnny-five");
 var board = new five.Board();
 
-board.on("ready", () => {
+board.on("ready", function() {
   var button = new five.Button(2);
 
-  button.on("press", () => console.log("Button Pressed!"));
+  button.on("press", function() console.log("Button Pressed!"));
 });
 </code></pre>
 <h3><code>node button.js</code></h3>
@@ -475,10 +475,10 @@ var Tessel = require("tessel-io");
 
 var board = new five.Board( { io: new Tessel() });
 
-board.on("ready", () => {
+board.on("ready", function() {
   var button = new five.Button("a4");
 
-  button.on("press", () => console.log("Button Pressed!"));
+  button.on("press", function() console.log("Button Pressed!"));
 });
 </code></pre>
 <h3><code>t2 run button.js</code></h3>
@@ -494,8 +494,8 @@ var board = new five.Board();
 board.on("ready", function() {
   var button = new five.Button(2);
 
-  button.on("press", () => console.log("Button Pressed!"));
-  button.on("release", () => console.log("Button Released!"));
+  button.on("press", function() console.log("Button Pressed!"));
+  button.on("release", function() console.log("Button Released!"));
 });
 </code></pre>
 <h3><code>node button.js</code></h3>
@@ -508,11 +508,11 @@ var Tessel = require("tessel-io");
 
 var board = new five.Board( { io: new Tessel() });
 
-board.on("ready", () => {
+board.on("ready", function() {
   var button = new five.Button("a4");
 
-  button.on("press", () => console.log("Button Pressed!"));
-  button.on("release", () => console.log("Button Released!"));
+  button.on("press", function() console.log("Button Pressed!"));
+  button.on("release", function() console.log("Button Released!"));
 
 });
 </code></pre>
@@ -526,12 +526,12 @@ board.on("ready", () => {
 <pre><code contenteditable>var five = require("johnny-five");
 var board = new five.Board();
 
-board.on("ready", () => {
+board.on("ready", function() {
   var led = new five.Led(11);
   var button = new five.Button(2);
 
-  button.on("press", () => led.on());
-  button.on("release", () => led.off());
+  button.on("press", function() led.on());
+  button.on("release", function() led.off());
 });
 </code></pre>
 <h3><code>node button.js</code></h3>
@@ -544,12 +544,12 @@ var Tessel = require("tessel-io");
 
 var board = new five.Board( { io: new Tessel() });
 
-board.on("ready", () => {
+board.on("ready", function() {
   var led = new five.Led("a5");
   var button = new five.Button("a4");
 
-  button.on("press", () => led.on());
-  button.on("release", () => led.off());
+  button.on("press", function() led.on());
+  button.on("release", function() led.off());
 });
 </code></pre>
 <h3><code>node button.js</code></h3>
@@ -563,13 +563,13 @@ board.on("ready", () => {
 <pre><code contenteditable>var five = require("johnny-five");
 var board = new five.Board();
 
-board.on("ready", () => {
+board.on("ready", function() {
   var led = new five.Led(11);
   var button = new five.Button(2);
 
-  button.on("press", () => led.on());
-  button.on("hold", () => led.blink(50));
-  button.on("release", () => led.stop().off());
+  button.on("press", function() led.on());
+  button.on("hold", function() led.blink(50));
+  button.on("release", function() led.stop().off());
 });
 </code></pre>
 <h3><code>node button.js</code></h3>
@@ -586,9 +586,9 @@ board.on("ready", function() {
   var led = new five.Led("a5");
   var button = new five.Button("a4");
 
-  button.on("press", () => led.on());
-  button.on("hold", () => led.blink(50));
-  button.on("release", () => led.stop().off());
+  button.on("press", function() led.on());
+  button.on("hold", function() led.blink(50));
+  button.on("release", function() led.stop().off());
 });
 </code></pre>
 <h3><code>t2 run button.js</code></h3>
@@ -648,10 +648,10 @@ board.on("ready", function() {
 <pre><code contenteditable>var five = require("johnny-five");
 var board = new five.Board();
 
-board.on("ready", () => {
+board.on("ready", function() {
   var rotary = new five.Sensor("A0");
 
-  rotary.on("change", () => {
+  rotary.on("change", function() {
     console.log("Sensor changed!", this.value);
   });
 });
@@ -666,10 +666,10 @@ var Tessel = require("tessel-io");
 
 var board = new five.Board( { io: new Tessel() });
 
-board.on("ready", () => {
+board.on("ready", function() {
   var rotary = new five.Sensor("a4");
 
-  rotary.on("change", () => {
+  rotary.on("change", function() {
     console.log("Sensor changed!", this.value);
   });
 });
@@ -695,7 +695,7 @@ var five = require("johnny-five");
 
 var board = new five.Board();
 
-board.on("ready", () => {
+board.on("ready", function() {
   var range = [0, 1024];
   var graph = new Barcli({
     label: "Potentiometer",
@@ -703,7 +703,7 @@ board.on("ready", () => {
   });
   var rotary = new five.Sensor("A0");
 
-  rotary.scale(0, 1024).on("change", () => {
+  rotary.scale(0, 1024).on("change", function() {
     graph.update(this.value);
   });
 });
@@ -719,7 +719,7 @@ var Tessel = require("tessel-io");
 
 var board = new five.Board( { io: new Tessel() });
 
-board.on("ready", () => {
+board.on("ready", function() {
   var range = [0, 1024];
   var graph = new Barcli({
     label: "Potentiometer",
@@ -727,7 +727,7 @@ board.on("ready", () => {
   });
   var rotary = new five.Sensor("a4");
 
-  rotary.scale(0, 1024).on("change", () => {
+  rotary.scale(0, 1024).on("change", function() {
     graph.update(this.value);
   });
 });
@@ -795,11 +795,11 @@ board.on("ready", () => {
 <pre><code contenteditable>var five = require("johnny-five");
 var board = new five.Board();
 
-board.on("ready", () => {
+board.on("ready", function() {
   var led = new five.Led(11);
   var rotary = new five.Sensor("A0");
 
-  rotary.on("change", () => {
+  rotary.on("change", function() {
     // Analog sensors produce a 10-bit value,
     // but led brightness is an 8-bit PWM value.
     // Convert by shifting the value's bits
@@ -818,11 +818,11 @@ var Tessel = require("tessel-io");
 
 var board = new five.Board( { io: new Tessel() });
 
-board.on("ready", () => {
+board.on("ready", function() {
   var led = new five.Led("a5");
   var rotary = new five.Sensor("a4");
 
-  rotary.on("change", () => {
+  rotary.on("change", function() {
     // Analog sensors produce a 10-bit value,
     // but led brightness is an 8-bit PWM value.
     // Convert by shifting the value's bits
@@ -850,7 +850,7 @@ board.on("ready", () => {
 
         <section>
           <section>
-          <a href="assets/temperature.png" target="_blank"><img src="assets/temperature.png" style="width: 800px"></a>
+          <a href="assets/tmp36_bb.png" target="_blank"><img src="assets/tmp36_bb.png" style="width: 800px"></a>
         </section>
         <section>
         <a href="assets/temperatureT2_bb.png" target="_blank"><img src="assets/temperatureT2_bb.png" style="width: 800px"></a>
@@ -863,13 +863,13 @@ board.on("ready", () => {
 <pre><code contenteditable>var five = require("johnny-five");
 var board = new five.Board();
 
-board.on("ready", () => {
+board.on("ready", function() {
   var temp = new five.Temperature({
     controller: "TMP36",
     pin: "A0"
   });
 
-  temp.on("change", () => {
+  temp.on("change", function() {
     console.log(this.celsius + "°C");
   });
 });
@@ -883,13 +883,13 @@ board.on("ready", () => {
 
   var board = new five.Board( { io: new Tessel() });
 
-board.on("ready", () => {
+board.on("ready", function() {
   var temp = new five.Temperature({
     controller: "TMP36",
     pin: "a4"
   });
 
-  temp.on("change", () => {
+  temp.on("change", function() {
     console.log(this.celsius + "°C");
   });
 });
