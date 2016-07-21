@@ -60,10 +60,12 @@ body {
 .reveal h4 {
 	margin: 0 0 20px 0;
 
+	font-weight: normal;
+
 	color: #eee;
 
 	font-family: 'League Gothic', sans-serif;
-	line-height: 0.9em;
+	line-height: 1.1em;
 	letter-spacing: 0.02em;
 
 	/* text-transform: uppercase;*/
@@ -73,7 +75,7 @@ body {
 .reveal h1 { font-size: 136px; 	}
 .reveal h2 { font-size: 76px;	}
 .reveal h3 { font-size: 56px; margin-bottom: 10px;	}
-.reveal h4 { font-size: 36px;	}
+.reveal h4 { font-size: 24px; line-height: 36px; font-family: 'Lato', Times, 'Times New Roman', serif;	}
 
 .reveal h1.inverted,
 .reveal h2.inverted,
@@ -252,8 +254,7 @@ body {
 
 	.reveal a:not(.image):hover {
 		color: hsl(185, 85%, 70%);
-		background: hsla(185, 25%, 20%, 0.4);
-		text-shadow: none;
+		btext-shadow: none;
 		border: none;
 		border-radius: 2px;
 	}
@@ -410,12 +411,7 @@ body {
             transform-style: preserve-3d;
 }
     .reveal .roll:hover span {
-        background: rgba(0,0,0,0.5);
-
-        -webkit-transform: translate3d( 0px, 0px, -45px ) rotateX( 90deg );
-           -moz-transform: translate3d( 0px, 0px, -45px ) rotateX( 90deg );
-            -ms-transform: translate3d( 0px, 0px, -45px ) rotateX( 90deg );
-                transform: translate3d( 0px, 0px, -45px ) rotateX( 90deg );
+        text-decoration: underline;
     }
 .reveal .roll span:after {
     content: attr(data-title);
@@ -959,4 +955,18 @@ body {
 }
 .blackout .state-background {
 	background: rgba( 0, 0, 0, 0.6 );
+}
+
+button {
+	-webkit-appearance: none;
+	-webkit-user-select: none;
+	background-image: -webkit-linear-gradient(#ededed, #ededed 38%, #dedede);
+	border: 1px solid rgba(0, 0, 0, 0.25);
+	border-radius: 2px;
+	box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08),
+			inset 0 1px 2px rgba(255, 255, 255, 0.75);
+	color: #444;
+	font: inherit;
+	margin: 0 1px 0 0;
+	text-shadow: 0 1px 0 rgb(240, 240, 240);
 }
