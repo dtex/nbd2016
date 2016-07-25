@@ -145,6 +145,13 @@
           </h1>
         </section>
 
+        <section style="display: block;">
+          <br>
+          <h1>
+            Charge that USB backup battery!
+          </h1>
+        </section>
+
         <section>
           <br>
           <h1>
@@ -152,16 +159,9 @@
           </h1>
         </section>
 
-        <section>
-          <section>
-            <a href="assets/arduino_desktop.jpg" target="_blank"><img src="assets/arduino_desktop.jpg" style="width: 800px"></a>
-          </section>
-
           <section>
             <a href="assets/t2Labeled.png" target="_blank"><img src="assets/t2Labeled.png" style="width: 600px"></a>
           </section>
-
-        </section>
 
         <section>
           <h3>Breadboard: Solderless wiring</h3>
@@ -214,24 +214,8 @@
         </section>
 
 
-          <section>
-
-            <section>
-              <a href="assets/led_bb.png" target="_blank"><img src="assets/led_bb.png" style="width: 800px"></a>
-            </section>
-
             <section>
               <a href="assets/ledT2_bb.png" target="_blank"><img src="assets/ledT2_bb.png" style="width: 800px"></a>
-            </section>
-
-          </section>
-
-          <section>
-            <section>
-              <br><br><br><br>
-              <h2>
-                Connect The Arduino to your computer via USB.
-              </h2>
             </section>
 
             <section>
@@ -256,11 +240,8 @@
               <br/><br/><br/><br/>
               <h3><code>t2 provision</code></h3><br>
               <h3><code>t2 wifi -n networkName -p password</code></h3><br>
-              <h3><code>t2 rename yourChoice</code></h3><br>
+              <h3><code>t2 rename myTessel</code></h3><br>
             </section>
-
-
-          </section>
 
           <section>
             <br><br><br><br>
@@ -280,55 +261,15 @@
           </section>
 
           <section>
-            <a href="assets/sgier-johnny-five.png" target="_blank"><img src="assets/sgier-johnny-five.png" style="width: 400px"></a>
-            <h3><code>npm install tessel-io</code></h3>
+            <br/><br/><img src="assets/tessel-logo.png" style="border-width: 0;width: 400px;background: none;box-shadow: none;" />
+            <br/><br/><h3><code>npm install tessel-io</code></h3>
           </section>
-
-
-
-          <!--<section>
-            <h3>Don't do this:</h3>
-  <pre><code contenteditable="" class="php">$ node
-&gt; <span class="keyword">var</span> j5 = <span class="keyword">require</span>(<span class="string">"johnny-five"</span>);
-undefined
-&gt; <span class="keyword">var</span> board = <span class="keyword">new</span> j5.Board();
-undefined
-&gt; <span class="number">1432581579628</span> Looking <span class="keyword">for</span> connected device
-&gt; <span class="keyword">var</span> board = <span class="keyword">new</span> j5.Board();
-undefined
-&gt; <span class="number">1432581593535</span> Device(s) /dev/cu.usbmodem1411
-<span class="number">1432581593554</span> Connected /dev/cu.usbmodem1411
-
-undefined
-&gt; <span class="number">1432581594739</span> Looking <span class="keyword">for</span> connected device
-
-undefined
-&gt;
-undefined
-  </code></pre>
-</section>-->
 
           <section>
             <br><br><br><br>
             <h1>
               Make a new file.
             </h1>
-          </section>
-<section>
-          <section>
-            <h2>Turn it on</h2>
-  <pre><code contenteditable>var five = require("johnny-five");
-var board = new five.Board();
-
-board.on("ready", function() {
-  var led = new five.Led(11);
-  led.on();
-});</code></pre>
-  <h3><code>node led-on.js</code></h3>
-  <h4>
-    <a href="http://johnny-five.io/api/board" target="_blank">http://johnny-five.io/api/board</a><br/>
-    <a href="http://johnny-five.io/api/led" target="_blank">http://johnny-five.io/api/led</a>
- </h4>
           </section>
 
           <section>
@@ -348,23 +289,6 @@ board.on("ready", function() {
   <a href="http://johnny-five.io/api/led" target="_blank">http://johnny-five.io/api/led</a>
 </h4>
           </section>
-</section>
-
-<section>
-
-
-<section>
-            <h2>Make it blink</h2>
-  <pre><code contenteditable>var five = require("johnny-five");
-var board = new five.Board();
-
-board.on("ready", function() {
-  var led = new five.Led(11);
-  led.blink();
-});
-  </code></pre>
-  <h3><code>node led-blink.js</code></h3>
-          </section>
 
           <section>
             <h2>Make it blink</h2>
@@ -379,21 +303,6 @@ board.on("ready", function() {
 });</code></pre>
           <h3><code>t2 run led-blink.js</code></h3>
           </section>
-        </section>
-
-        <section>
-          <section>
-          <h2>Change the blink rate.</h2>
-<pre><code contenteditable>var five = require("johnny-five");
-var board = new five.Board();
-
-board.on("ready", function() {
-  var led = new five.Led(11);
-  led.blink(250); // <-- ms on/off phases
-});
-</code></pre>
-<h3><code>node led-blink-slow.js</code></h3>
-        </section>
 
         <section>
         <h2>Change the blink rate.</h2>
@@ -409,40 +318,6 @@ board.on("ready", function() {
 </code></pre>
 <h3><code>t2 run led-blink-slow.js</code></h3>
       </section>
-    </section>
-
-
-            <section>
-            <h2>Manual, live control</h2>
-  <pre><code contenteditable>var five = require("johnny-five");
-var board = new five.Board();
-
-board.on("ready", function() {
-  var led = new five.Led(11);
-
-  this.repl.inject({
-    led: led
-  });
-});
-  </code></pre>
-  <h3><code>node led-boss.js</code></h3>
-          </section>
-
-          <section>
-            <h2>In the REPL</h2>
-  <pre><code contenteditable="" class="undefined">&gt; led.on();
-
-&gt; led.off();
-
-&gt; led.blink();
-
-&gt; led.stop();
-
-&gt; led.pulse();
-
-  </code></pre>
-          </section>
-
 
         <section>
           <br><br><br>
@@ -455,33 +330,10 @@ board.on("ready", function() {
         </section>
 
 
-        <section>
-          <section>
-            <a href="assets/button_bb.png" target="_blank"><img src="assets/button_bb.png" style="width: 800px"></a>
-          </section>
           <section>
             <a href="assets/buttonT2_bb.png" target="_blank"><img src="assets/buttonT2_bb.png" style="width: 800px"></a>
           </section>
-        </section>
 
-        <section>
-          <section>
-          <h2>Respond to Button Press</h2>
-<pre><code contenteditable>var five = require("johnny-five");
-var board = new five.Board();
-
-board.on("ready", function() {
-  var button = new five.Button(2);
-
-  button.on("press", function() console.log("Button Pressed!"));
-});
-</code></pre>
-<h3><code>node button.js</code></h3>
-<h4>
-  <a href="http://johnny-five.io/api/button" target="_blank">http://johnny-five.io/api/button</a>
-</h4>
-
-        </section>
 
         <section>
         <h2>Respond to Button Press</h2>
@@ -498,23 +350,6 @@ board.on("ready", function() {
 </code></pre>
 <h3><code>t2 run button.js</code></h3>
       </section>
-    </section>
-
-        <section>
-          <section>
-          <h2>Respond to Button Release</h2>
-<pre><code contenteditable>var five = require("johnny-five");
-var board = new five.Board();
-
-board.on("ready", function() {
-  var button = new five.Button(2);
-
-  button.on("press", function() console.log("Button Pressed!"));
-  button.on("release", function() console.log("Button Released!"));
-});
-</code></pre>
-<h3><code>node button.js</code></h3>
-        </section>
 
         <section>
           <h2>Respond to Button Release</h2>
@@ -533,24 +368,6 @@ board.on("ready", function() {
 </code></pre>
 <h3><code>t2 run button.js</code></h3>
         </section>
-      </section>
-
-        <section>
-          <section>
-          <h2>Convert Input to Output</h2>
-<pre><code contenteditable>var five = require("johnny-five");
-var board = new five.Board();
-
-board.on("ready", function() {
-  var led = new five.Led(11);
-  var button = new five.Button(2);
-
-  button.on("press", function() led.on());
-  button.on("release", function() led.off());
-});
-</code></pre>
-<h3><code>node button.js</code></h3>
-        </section>
 
         <section>
           <h2>Convert Input to Output</h2>
@@ -567,27 +384,7 @@ board.on("ready", function() {
   button.on("release", function() led.off());
 });
 </code></pre>
-<h3><code>node button.js</code></h3>
-        </section>
-
-        </section>
-
-        <section>
-          <section>
-          <h3>Multiple States of Input to Multiple States of Output</h3>
-<pre><code contenteditable>var five = require("johnny-five");
-var board = new five.Board();
-
-board.on("ready", function() {
-  var led = new five.Led(11);
-  var button = new five.Button(2);
-
-  button.on("press", function() led.on());
-  button.on("hold", function() led.blink(50));
-  button.on("release", function() led.stop().off());
-});
-</code></pre>
-<h3><code>node button.js</code></h3>
+<h3><code>t2 run button.js</code></h3>
         </section>
 
         <section>
@@ -609,6 +406,15 @@ board.on("ready", function() {
 <h3><code>t2 run button.js</code></h3>
         </section>
 
+        <section>
+          <h2>
+            And now for something completely different
+          </h2>
+          <h3>t2 push button.js</h3>
+        </section>
+        <section>
+          <h2>Unplug from the computer and plug in backup battery</h2>
+          <h3>Wait for reboot and try it standalone</h3>
         </section>
 
         <section>
