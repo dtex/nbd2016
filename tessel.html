@@ -110,9 +110,8 @@
 
         <section style="display: block;">
           <br><br><br><br>
-          <h1>Follow Along <br>
-            <a href="http://dtex.github.io/nbd2016" target="_blank" data-destyle="" class="">dtex.github.io/nbd2016</a>
-          </h1>
+          <h1>Follow Along</h1>
+          <h3><a href="http://dtex.github.io/nbd2016/tessel.html" target="_blank" data-destyle="" class="">dtex.github.io/nbd2016/tessel.html</a></h3>
         </section>
 
         <section style="display: block;">
@@ -313,7 +312,7 @@ var board = new five.Board( { io: new Tessel() });
 
 board.on("ready", function() {
   var led = new five.Led("a5");
-  led.blink(250); // <-- ms on/off phases
+  led.blink(2500); // <-- ms on/off phases
 });
 </code></pre>
 <h3><code>t2 run led-blink-slow.js</code></h3>
@@ -344,11 +343,11 @@ var board = new five.Board( { io: new Tessel() });
 
 board.on("ready", function() {
   var button = new five.Button("a4");
-
-  button.on("press", function() console.log("Button Pressed!"));
+  button.on("press", function() { console.log("Button Pressed!")});
 });
 </code></pre>
 <h3><code>t2 run button.js</code></h3>
+<h4><a href="http://johnny-five.io/api/button" target="_blank">http://johnny-five.io/api/button</a></h4>
       </section>
 
         <section>
@@ -360,10 +359,8 @@ var board = new five.Board( { io: new Tessel() });
 
 board.on("ready", function() {
   var button = new five.Button("a4");
-
-  button.on("press", function() console.log("Button Pressed!"));
-  button.on("release", function() console.log("Button Released!"));
-
+  button.on("press", function() { console.log("Button Pressed!")});
+  button.on("release", function() { console.log("Button Released!")});
 });
 </code></pre>
 <h3><code>t2 run button.js</code></h3>
@@ -407,13 +404,14 @@ board.on("ready", function() {
         </section>
 
         <section>
+          <br/><br/><br/>
           <h2>
             And now for something completely different
           </h2>
           <h3>t2 push button.js</h3>
         </section>
         <section>
-          <h2>Unplug from the computer and plug in backup battery</h2>
+          <br/><br/><br/><h2>Unplug from the computer and<br/>plug in the USB battery</h2>
           <h3>Wait for reboot and try it standalone</h3>
         </section>
 
@@ -425,35 +423,7 @@ board.on("ready", function() {
         </section>
 
         <section>
-          <section>
-          <a href="assets/potentiometer_bb.png" target="_blank"><img src="assets/potentiometer_bb.png" style="width: 800px"></a>
-        </section>
-
-        <section>
           <a href="assets/potentiometerT2_bb.png" target="_blank"><img src="assets/potentiometerT2_bb.png" style="width: 800px"></a>
-        </section>
-
-      </section>
-
-        <section>
-          <section>
-          <h3>Receive Values From a Sensor</h3>
-<pre><code contenteditable>var five = require("johnny-five");
-var board = new five.Board();
-
-board.on("ready", function() {
-  var rotary = new five.Sensor("A0");
-
-  rotary.on("change", function() {
-    console.log("Sensor changed!", this.value);
-  });
-});
-</code></pre>
-<h3><code>node sensor.js</code></h3>
-<h4>
-  <a href="http://johnny-five.io/api/sensor" target="_blank">http://johnny-five.io/api/sensor</a>
-</h4>
-
         </section>
 
         <section>
@@ -472,8 +442,7 @@ board.on("ready", function() {
 });
 </code></pre>
 <h3><code>t2 run sensor.js</code></h3>
-        </section>
-
+<h4><a href="http://johnny-five.io/api/sensor" target="_blank">http://johnny-five.io/api/sensor</a></h4>
         </section>
 
         <section>
@@ -488,29 +457,6 @@ board.on("ready", function() {
 
         </section>
 
-        <section>
-          <section>
-          <h3>Analog Data</h3>
-<pre><code contenteditable>var Barcli = require("barcli");
-var five = require("johnny-five");
-
-var board = new five.Board();
-
-board.on("ready", function() {
-  var range = [0, 1024];
-  var graph = new Barcli({
-    label: "Potentiometer",
-    range: range,
-  });
-  var rotary = new five.Sensor("A0");
-
-  rotary.scale(0, 1024).on("change", function() {
-    graph.update(this.value);
-  });
-});
-</code></pre>
-<h3><code>node sensor.js</code></h3>
-        </section>
 
         <section>
         <h3>Analog Data</h3>
@@ -521,10 +467,9 @@ var Tessel = require("tessel-io");
 var board = new five.Board( { io: new Tessel() });
 
 board.on("ready", function() {
-  var range = [0, 1024];
   var graph = new Barcli({
     label: "Potentiometer",
-    range: range,
+    range: [0, 1024]
   });
   var rotary = new five.Sensor("a4");
 
@@ -535,8 +480,6 @@ board.on("ready", function() {
 </code></pre>
 <h3><code>t2 run sensor.js</code></h3>
       </section>
-
-    </section>
 
 
         <section>
@@ -551,7 +494,7 @@ board.on("ready", function() {
           </h1>
           <h1>
             <!-- This is fucking stupid. Leaque Gothic puts the tilde at the top of the letter -->
-            <code>~</code>5V in 10 bits
+            <code>~</code>3.3V in 10 bits
           </h1>
         </section>
 
@@ -619,28 +562,6 @@ board.on("ready", function() {
         </section>
 
         <section>
-          <section>
-          <h3>Convert 10-bit Analog Input to 8-bit PWM Output</h3>
-<pre><code contenteditable>var five = require("johnny-five");
-var board = new five.Board();
-
-board.on("ready", function() {
-  var led = new five.Led(11);
-  var rotary = new five.Sensor("A0");
-
-  rotary.on("change", function() {
-    // Analog sensors produce a 10-bit value,
-    // but led brightness is an 8-bit PWM value.
-    // Convert by shifting the value's bits
-    // two places to the right.
-    led.brightness(this.value >> 2);
-  });
-});
-</code></pre>
-<h3><code>node sensor.js</code></h3>
-        </section>
-
-        <section>
         <h3>Convert 10-bit Analog Input to 8-bit PWM Output</h3>
 <pre><code contenteditable>var five = require("johnny-five");
 var Tessel = require("tessel-io");
@@ -660,9 +581,8 @@ board.on("ready", function() {
   });
 });
 </code></pre>
-<h3><code>node sensor.js</code></h3>
+<h3><code>t2 run sensor.js</code></h3>
       </section>
-    </section>
 
 
 
@@ -678,33 +598,9 @@ board.on("ready", function() {
 
 
         <section>
-          <section>
-          <a href="assets/tmp36_bb.png" target="_blank"><img src="assets/tmp36_bb.png" style="width: 800px"></a>
-        </section>
-        <section>
         <a href="assets/temperatureT2_bb.png" target="_blank"><img src="assets/temperatureT2_bb.png" style="width: 800px"></a>
       </section>
-    </section>
 
-    <section>
-      <section>
-      <h3>Temperature</h3>
-<pre><code contenteditable>var five = require("johnny-five");
-var board = new five.Board();
-
-board.on("ready", function() {
-  var temp = new five.Temperature({
-    controller: "TMP36",
-    pin: "A0"
-  });
-
-  temp.on("change", function() {
-    console.log(this.celsius + "°C");
-  });
-});
-</code></pre>
-<h3><code>node temperature.js</code></h3>
-    </section>
     <section>
     <h3>Temperature</h3>
 <pre><code contenteditable>var five = require("johnny-five");
@@ -724,48 +620,8 @@ board.on("ready", function() {
 });
 </code></pre>
 <h3><code>t2 run temperature.js</code></h3>
+<h4><a href="http://johnny-five.io/api/temperature" target="_blank">http://johnny-five.io/api/temperature</a></h4>
   </section>
-</section>
-
-       <section>
-          <br><br><br>
-          <h1>Convert Temperature to RGB</h1>
-        </section>
-
-        <section>
-          <a href="assets/diffused-rgb-led.jpg" target="_blank"><img src="assets/diffused-rgb-led.jpg" style="width: 600px"></a>
-        </section>
-
-
-        <section>
-          <a href="assets/temperature-rgb.png" target="_blank"><img src="assets/temperature-rgb.png" style="width: 800px"></a>
-        </section>
-
-        <section>
-          <h3>Temperature Display</h3>
-<pre><code contenteditable="" class="javascript"><span class="keyword">var</span> five = require(<span class="string">"johnny-five"</span>);
-<span class="keyword">var</span> board = <span class="keyword">new</span> five.Board();
-
-board.on(<span class="string">"ready"</span>, <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
-  <span class="keyword">var</span> temp = <span class="keyword">new</span> five.Temperature({
-    controller: <span class="string">"TMP36"</span>,
-    pin: <span class="string">"A0"</span>
-  });
-
-  <span class="keyword">var</span> rgb = <span class="keyword">new</span> five.Led.RGB({
-    pins: [<span class="number">3</span>, <span class="number">5</span>, <span class="number">6</span>],
-    isAnode: <span class="literal">true</span>
-  });
-
-  temp.on(<span class="string">"change"</span>, <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
-    <span class="comment">// Write an algorithm that converts temperature (F, K or C)</span>
-    <span class="comment">// into an RGB hex value.</span>
-    rgb.color(??????);
-  });
-});
-</code></pre>
-        </section>
-
 
           <section>
             <br><br><br><br>
@@ -795,6 +651,54 @@ board.on(<span class="string">"ready"</span>, <span class="function"><span class
           </section>
 
           <section>
+            <br><br><br><br>
+            <h2>
+              Add glue &amp; let it dry
+            </h2>
+          </section>
+
+          <section>
+             <br><br><br>
+             <h1>Control a Continuous Rotation Servo</h1>
+           </section>
+
+          <section>
+            <a href="assets/servoT2_bb.png" target="_blank"><img src="assets/servoT2_bb.png" style="width: 600px"></a>
+          </section>
+
+          <section>
+          <h3>Controlling a Servo</h3>
+    <pre><code contenteditable>var five = require("johnny-five");
+var Tessel = require("tessel-io");
+
+var board = new five.Board( { io: new Tessel() });
+
+board.on("ready", function() {
+  var servo = new five.Servo.({
+    type: "continuous",
+    pin: "a5"
+  });
+
+  servo.cw();
+
+  setTimeout( function() {
+    console.log("stop");
+    servo.stop();
+  }, 2000)
+
+});
+</code></pre>
+    <h3><code>t2 run servo.js</code></h3>
+    <a href="http://johnny-five.io/api/servo" target="_blank">http://johnny-five.io/api/servo</a><br/>
+
+        </section>
+
+        <section>
+          <h2>Trim the servo</h2>
+          <a href="assets/trim.jpg" target="_blank"><img src="assets/trim.jpg" style="width: 400px"></a>
+        </section>
+
+          <section>
             <a href="assets/4.jpg" target="_blank"><img src="assets/4.jpg" style="width: 600px"></a>
           </section>
 
@@ -819,122 +723,43 @@ board.on(<span class="string">"ready"</span>, <span class="function"><span class
           </section>
 
           <section>
-            <br><br><br><br>
-            <h2>
-              Connect The Arduino to your computer via USB.
-            </h2>
-          </section>
-
-
-          <section>
             <h2>Make it go!</h2>
-<pre><code contenteditable="" class="javascript"><span class="keyword">var</span> five = require(<span class="string">"johnny-five"</span>);
-<span class="keyword">var</span> board = <span class="keyword">new</span> five.Board();
+<pre><code contenteditable>var Five = require("johnny-five");
+var Tessel = require("tessel-io");
 
-board.on(<span class="string">"ready"</span>, <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
-  <span class="comment">// Johnny-Five provides pre-packages shield configurations!</span>
-  <span class="comment">// http://johnny-five.io/api/motor/#pre-packaged-shield-configs</span>
-  <span class="keyword">var</span> motors = <span class="keyword">new</span> five.Motors([
-    five.Motor.SHIELD_CONFIGS.POLOLU_DRV8835_SHIELD.M1,
-    five.Motor.SHIELD_CONFIGS.POLOLU_DRV8835_SHIELD.M2,
-  ]);
+var board = new Five.Board({ io: new Tessel() });
 
-  motors.speed(<span class="number">255</span>);
+board.on("ready", function() {
 
-  <span class="keyword">this</span>.wait(<span class="number">3000</span>, <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
-    motors.stop();
-  });
+  var left = new Five.Servo({ pin: "b5", type: "continuous" });
+  var right = new Five.Servo({ pin: "b6", type: "continuous", invert: true });
+
+  left.cw();
+  right.cw();
+
+  setTimeout( function() {
+    left.stop();
+    right.stop();
+  }, 2500);
+
 });
+
 </code></pre>
-<h3><code>node rover.js</code></h3>
+<h3><code>t2 run bot.js</code></h3>
           </section>
-
-          <section>
-            <h2>Live Control</h2>
-<pre><code contenteditable="" class="javascript"><span class="keyword">var</span> five = require(<span class="string">"johnny-five"</span>);
-<span class="keyword">var</span> board = <span class="keyword">new</span> five.Board();
-
-board.on(<span class="string">"ready"</span>, <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
-  <span class="comment">// Johnny-Five provides pre-packages shield configurations!</span>
-  <span class="comment">// http://johnny-five.io/api/motor/#pre-packaged-shield-configs</span>
-  <span class="keyword">var</span> motors = <span class="keyword">new</span> five.Motors([
-    five.Motor.SHIELD_CONFIGS.POLOLU_DRV8835_SHIELD.M1,
-    five.Motor.SHIELD_CONFIGS.POLOLU_DRV8835_SHIELD.M2,
-  ]);
-
-  <span class="keyword">this</span>.repl.inject({
-    motors: motors
-  });
-
-  motors.speed(<span class="number">255</span>);
-});
-</code></pre>
-<h3><code>node rover.js</code></h3>
-          </section>
-          <section>
-            <h2>Try These!</h2>
-<pre><code contenteditable="" class="undefined">&gt; motors.stop();
-
-&gt; motors.speed(127);
-
-&gt; motors.fwd();
-
-&gt; motors.rev();
-</code></pre>
-          </section>
-
-
-
-
 
           <section>
             <br><br><br><br>
-            <h1><a href="https://github.com/rwaldron/pee-wee-rover/" target="_blank" data-destyle="" class="">Get The Project Files Here!</a></h1>
+            <h1><a href="https://github.com/dtex/t2-sumobot" target="_blank" data-destyle="" class="">In Case of Emergency!</a></h1>
 
           </section>
-
-
-
-
-
-
-
-
 
         <section>
           <a href="assets/sgier-johnny-five(1).png" target="_blank"><img src="assets/sgier-johnny-five(1).png" style="width:400px;height:400px"></a>
           <h3>
             johnny-five.io
           </h3>
-          <h3>
-            github.com/rwaldron/johnny-five
-          </h3>
-          <h3>
-            twitter.com/rwaldron/lists/nodebotics
-          </h3>
-
         </section>
-
-
-        <section>
-          <a href="assets/bocoup-200.png" target="_blank"><img src="assets/bocoup-200.png"></a>
-          <h1>Bocoup</h1>
-          <h3>@bocoup</h3>
-          <h3>bocoup.com</h3>
-        </section>
-
-
-        <section>
-          <br><br><br><br>
-          <h1>Bonus Material</h1>
-        </section>
-
-        <section>
-          <br><br><br><br>
-          <h2>Pages in the ARDX Book to ignore</h2>
-          <h3>4, 5, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29, 31, 33</h3><h3>
-        </h3></section>
-
 
       </div>
 
