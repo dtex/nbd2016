@@ -604,9 +604,8 @@ board.on("ready", function() {
     <section>
     <h3>Temperature</h3>
 <pre><code contenteditable>var five = require("johnny-five");
-  var Tessel = require("tessel-io");
-
-  var board = new five.Board( { io: new Tessel() });
+var Tessel = require("tessel-io");
+var board = new five.Board( { io: new Tessel() });
 
 board.on("ready", function() {
   var temp = new five.Temperature({
@@ -651,6 +650,10 @@ board.on("ready", function() {
           </section>
 
           <section>
+            <a href="assets/blade.jpg" target="_blank"><img src="assets/blade.jpg" style="width: 600px"></a>
+          </section>
+
+          <section>
             <br><br><br><br>
             <h2>
               Add glue &amp; let it dry
@@ -674,7 +677,7 @@ var Tessel = require("tessel-io");
 var board = new five.Board( { io: new Tessel() });
 
 board.on("ready", function() {
-  var servo = new five.Servo.({
+  var servo = new five.Servo({
     type: "continuous",
     pin: "a5"
   });
@@ -723,6 +726,22 @@ board.on("ready", function() {
           </section>
 
           <section>
+            <a href="assets/wheels.JPG" target="_blank"><img src="assets/wheels.JPG" style="width: 600px"></a>
+          </section>
+
+          <section>
+            <a href="assets/wheels2.JPG" target="_blank"><img src="assets/wheels2.JPG" style="width: 600px"></a>
+          </section>
+
+          <section>
+            <a href="assets/AA_Batteries.JPG" target="_blank"><img src="assets/AA_Batteries.JPG" style="width: 600px"></a>
+          </section>
+
+          <section>
+            <a href="assets/usb_battery.JPG" target="_blank"><img src="assets/usb_battery.JPG" style="width: 600px"></a>
+          </section>
+
+          <section>
             <h2>Make it go!</h2>
 <pre><code contenteditable>var Five = require("johnny-five");
 var Tessel = require("tessel-io");
@@ -731,8 +750,8 @@ var board = new Five.Board({ io: new Tessel() });
 
 board.on("ready", function() {
 
-  var left = new Five.Servo({ pin: "b5", type: "continuous" });
-  var right = new Five.Servo({ pin: "b6", type: "continuous", invert: true });
+  var left = new Five.Servo({ pin: "a5", type: "continuous" });
+  var right = new Five.Servo({ pin: "a6", type: "continuous", invert: true });
 
   left.cw();
   right.cw();
@@ -750,7 +769,7 @@ board.on("ready", function() {
 
           <section>
             <br><br><br><br>
-            <h1><a href="https://github.com/dtex/t2-sumobot" target="_blank" data-destyle="" class="">In Case of Emergency!</a></h1>
+            <h1><a href="https://github.com/dtex/t2-sumobot" target="_blank" data-destyle="" class="">Click In Case of Emergency!</a></h1>
 
           </section>
 
