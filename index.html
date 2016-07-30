@@ -810,8 +810,8 @@ board.on("ready", function() {
 var board = new five.Board();
 
 board.on("ready", function() {
-  var leftServo = new five.Servo({pin: 11});
-  var rightServo = new five.Servo({pin: 10, invert: true});
+  var left = new five.Servo({pin: 11});
+  var right = new five.Servo({pin: 10, invert: true});
   var servos = new five.Servos([left, right]);
 
   var commands = {
