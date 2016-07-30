@@ -238,7 +238,7 @@
             <section>
               <br/><br/><br/><br/>
               <h3><code>t2 provision</code></h3><br>
-              <h3><code>t2 wifi -n networkName -p password</code></h3><br>
+              <h3><code>t2 wifi -n UHWireless</code></h3><br>
               <h3><code>t2 rename myTessel</code></h3><br>
             </section>
 
@@ -377,8 +377,8 @@ board.on("ready", function() {
   var led = new five.Led("a5");
   var button = new five.Button("a4");
 
-  button.on("press", function() led.on());
-  button.on("release", function() led.off());
+  button.on("press", function() { led.on(); });
+  button.on("release", function() { led.off(); });
 });
 </code></pre>
 <h3><code>t2 run button.js</code></h3>
@@ -395,13 +395,29 @@ board.on("ready", function() {
   var led = new five.Led("a5");
   var button = new five.Button("a4");
 
-  button.on("press", function() led.on());
-  button.on("hold", function() led.blink(50));
-  button.on("release", function() led.stop().off());
+  button.on("press", function() { led.on(); });
+  button.on("hold", function() { led.blink(50); });
+  button.on("release", function() { led.stop().off(); });
 });
 </code></pre>
 <h3><code>t2 run button.js</code></h3>
         </section>
+
+        <section>
+          <br/><br/><br/>
+          <h2>
+            t2 ap -n myNetworkName -p myPassword
+          </h2>
+          <h2>
+            t2 wifi --off
+          </h2>
+          <h3>t2 push button.js</h3>
+        </section>
+
+
+
+
+
 
         <section>
           <br/><br/><br/>
